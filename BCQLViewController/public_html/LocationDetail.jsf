@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="LocationDetail.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                        <af:outputText value="Location Detail" id="ot1" inlineStyle="font-size:x-large;"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                        <af:panelFormLayout id="pfl1">
+                            <af:panelLabelAndMessage label="#{bindings.LocationId.hints.label}" id="plam1">
+                                <af:outputText value="#{bindings.LocationId.inputValue}" shortDesc="#{bindings.LocationId.hints.tooltip}" id="ot2">
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.LocationId.format}"/>
+                                </af:outputText>
+                            </af:panelLabelAndMessage>
+                            <af:inputText value="#{bindings.StreetAddress.inputValue}" label="#{bindings.StreetAddress.hints.label}"
+                                          required="#{bindings.StreetAddress.hints.mandatory}" columns="#{bindings.StreetAddress.hints.displayWidth}"
+                                          maximumLength="#{bindings.StreetAddress.hints.precision}" shortDesc="#{bindings.StreetAddress.hints.tooltip}"
+                                          id="it1">
+                                <f:validator binding="#{bindings.StreetAddress.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.PostalCode.inputValue}" label="#{bindings.PostalCode.hints.label}"
+                                          required="#{bindings.PostalCode.hints.mandatory}" columns="#{bindings.PostalCode.hints.displayWidth}"
+                                          maximumLength="#{bindings.PostalCode.hints.precision}" shortDesc="#{bindings.PostalCode.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.PostalCode.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.City.inputValue}" label="#{bindings.City.hints.label}" required="#{bindings.City.hints.mandatory}"
+                                          columns="#{bindings.City.hints.displayWidth}" maximumLength="#{bindings.City.hints.precision}"
+                                          shortDesc="#{bindings.City.hints.tooltip}" id="it3">
+                                <f:validator binding="#{bindings.City.validator}"/>
+                            </af:inputText>
+                            <af:selectOneChoice value="#{bindings.CountryId.inputValue}" label="#{bindings.CountryId.label}"
+                                                required="#{bindings.CountryId.hints.mandatory}" shortDesc="#{bindings.CountryId.hints.tooltip}" id="soc1">
+                                <f:selectItems value="#{bindings.CountryId.items}" id="si1"/>
+                                <f:validator binding="#{bindings.CountryId.validator}"/>
+                            </af:selectOneChoice>
+                            <af:inputText value="#{bindings.StateProvince.inputValue}" label="#{bindings.StateProvince.hints.label}"
+                                          required="#{bindings.StateProvince.hints.mandatory}" columns="#{bindings.StateProvince.hints.displayWidth}"
+                                          maximumLength="#{bindings.StateProvince.hints.precision}" shortDesc="#{bindings.StateProvince.hints.tooltip}"
+                                          id="it4">
+                                <f:validator binding="#{bindings.StateProvince.validator}"/>
+                            </af:inputText>
+                            <f:facet name="footer">
+                                <af:panelGroupLayout layout="vertical" id="pgl2">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                        <af:button actionListener="#{bindings.First.execute}" text="First" disabled="#{!bindings.First.enabled}"
+                                                   partialSubmit="true" id="b1"/>
+                                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous" disabled="#{!bindings.Previous.enabled}"
+                                                   partialSubmit="true" id="b2"/>
+                                        <af:button actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}"
+                                                   partialSubmit="true" id="b3"/>
+                                        <af:button actionListener="#{bindings.Last.execute}" text="Last" disabled="#{!bindings.Last.enabled}"
+                                                   partialSubmit="true" id="b4"/>
+                                    </af:panelGroupLayout>
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                    <af:panelGroupLayout id="pgl4">
+                                        <af:button text="Save" id="b5" actionListener="#{bindings.Commit.execute}"/>
+                                        <af:spacer width="10" height="10" id="s2"/>
+                                        <af:button actionListener="#{bindings.Rollback.execute}" text="Cancel" immediate="true" id="b7">
+                                            <af:resetActionListener/>
+                                        </af:button>
+                                        <af:spacer width="10" height="10" id="s3"/>
+                                        <af:button text="Back" id="b6" action="back"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                        </af:panelFormLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

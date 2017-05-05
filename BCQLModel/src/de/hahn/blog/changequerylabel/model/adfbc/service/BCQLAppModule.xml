@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BCQLAppModule"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="CountriesView1"
+    ViewObjectName="de.hahn.blog.changequerylabel.model.adfbc.views.CountriesView"/>
+  <ViewUsage
+    Name="LocationsView1"
+    ViewObjectName="de.hahn.blog.changequerylabel.model.adfbc.views.LocationsView"/>
+  <ViewUsage
+    Name="RegionsView1"
+    ViewObjectName="de.hahn.blog.changequerylabel.model.adfbc.views.RegionsView"/>
+  <ViewUsage
+    Name="LocationsView2"
+    ViewObjectName="de.hahn.blog.changequerylabel.model.adfbc.views.LocationsView"/>
+  <ViewUsage
+    Name="CountriesView2"
+    ViewObjectName="de.hahn.blog.changequerylabel.model.adfbc.views.CountriesView"/>
+  <ViewLinkUsage
+    Name="LocCIdFkLink1"
+    ViewLinkObjectName="de.hahn.blog.changequerylabel.model.adfbc.views.links.LocCIdFkLink"
+    SrcViewUsageName="de.hahn.blog.changequerylabel.model.adfbc.service.BCQLAppModule.CountriesView1"
+    DstViewUsageName="de.hahn.blog.changequerylabel.model.adfbc.service.BCQLAppModule.LocationsView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="CountrRegFkLink1"
+    ViewLinkObjectName="de.hahn.blog.changequerylabel.model.adfbc.views.links.CountrRegFkLink"
+    SrcViewUsageName="de.hahn.blog.changequerylabel.model.adfbc.service.BCQLAppModule.RegionsView1"
+    DstViewUsageName="de.hahn.blog.changequerylabel.model.adfbc.service.BCQLAppModule.CountriesView2"
+    Reversed="false"/>
+</AppModule>
