@@ -95,6 +95,10 @@
   return 'US State';
 } else if (CountryId == 'DE') {
   return 'Bundesland';
+} else if (CountryId == 'CH') {
+  return 'Kanton';
+} else if (CountryId != null) {
+  return CountryId+' State';
 } else {
   return 'State';
 }]]></TransientExpression>
